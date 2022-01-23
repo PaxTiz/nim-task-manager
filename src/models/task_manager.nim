@@ -21,8 +21,12 @@ proc newTaskManager*(): TaskManager =
         let taskManager = to(jsonContent, TaskManager)
         return taskManager
     else:
+        let task = %*{
+            "name": "default", 
+            "tasks": %*[]
+        }
         let body = %*{
-            "default": @[]
+            "projects": @[task]
         }
 
         writeFile(filename, $body)
