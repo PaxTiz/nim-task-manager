@@ -1,5 +1,4 @@
-import ../../models/task_manager
-import ../../models/project
+import ../../models/[task_manager, project]
 
 proc createNewProject*(projectName: string) = 
     validateProjectName(projectName)

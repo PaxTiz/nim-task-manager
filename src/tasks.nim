@@ -1,8 +1,6 @@
 import tables
 import clapfn
-import ./commands/projects/list
-import ./commands/projects/new
-import ./commands/projects/delete
+import ./commands/projects/[list, new, delete]
 
 let parser = ArgumentParser(
   programName: "tasks", 

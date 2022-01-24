@@ -1,6 +1,5 @@
 import sequtils
-import ../../models/task_manager
-import ../../models/project
+import ../../models/[task_manager, project]
 
 proc newDeleteProject*(projectName: string) =
     validateProjectName(projectName)
