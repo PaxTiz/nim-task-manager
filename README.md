@@ -16,6 +16,14 @@ Optional arguments:
     -d, --debug                    Enable debug printing
 ```
 
+`tasks projects`: list all projects
+
+`tasks new -p=demo`: create a project with name 'demo'
+
+`tasks delete -p=demo`: delete the project with name 'demo'
+
+`tasks list -p=demo`: list all tasks related to project 'demo'
+
 ## How is it stored ?
 All data are stored in a single json file in the iCloud documents folder.
 
