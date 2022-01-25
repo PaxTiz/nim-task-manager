@@ -1,11 +1,11 @@
 import tables
 import clapfn
-import ./commands/projects/[list, new, delete]
+import ./application
 
 let parser = ArgumentParser(
-  programName: "tasks", 
+  programName: "tasks",
   fullName: "Tasks Manager",
-  description: "Manage tasks from CLI", 
+  description: "Manage tasks from CLI",
   version: "0.0.1",
   author: "Valentin Cernuta <vcernuta3@gmail.com>"
 )
@@ -22,19 +22,19 @@ when isMainModule:
   # [ ]  - delete <taskId> --project=<p> : delete the task with given id
 
   parser.addRequiredArgument(
-    name = "command", 
+    name = "command",
     help = "Command to execute"
   )
   parser.addStoreArgument(
-    shortName = "-p", 
-    longName = "--project", 
+    shortName = "-p",
+    longName = "--project",
     usageInput = "project",
-    default = "", 
+    default = "",
     help = "Name of the project"
   )
   parser.addSwitchArgument(
-    shortName = "-d", 
-    longName = "--debug", 
+    shortName = "-d",
+    longName = "--debug",
     default = false,
     help = "Enable debug printing"
   )
@@ -44,15 +44,13 @@ when isMainModule:
   let project = args["project"]
   let debug = args["debug"]
 
+  let app = newApplication()
+
   try:
     case command:
-      of "projects":
-        newListProjects()
-      of "new":
-        createNewProject(project)
-      of "delete":
-        newDeleteProject(project)
-      else:
-        echo "Unknown command"
+      of "projects": app.listProjects()
+      of "new": app.createProject(project)
+      of "delete": app.deleteProject(project)
+      else: echo "Unknown command"
   except Exception:
     echo "Error : " & getCurrentExceptionMsg()
