@@ -54,7 +54,8 @@ A task is inside a project, and you can have multiple projects so the `database`
 - [x] `projects` : list all projects
 - [x] `delete --project=<p>` : delete project with given name
 
-- [ ] `list --project=<p>` : list all tasks for the given project
+- [x] `list --project=<p>` : list all tasks for the given project
+
 - [ ] `add <text> --project=<p>` : add a new task for the given project, as non-completed
 - [ ] `complete <taskId> --project=<p>` : set the task with given id as complete
 - [ ] `delete <taskId> --project=<p>` : delete the task with given id

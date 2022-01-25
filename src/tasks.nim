@@ -1,6 +1,6 @@
 import tables
 import clapfn
-import ./application
+import ./models/task_manager
 
 let parser = ArgumentParser(
   programName: "tasks",
@@ -16,7 +16,8 @@ when isMainModule:
   # [x]  - projects : list all projects
   # [x]  - delete --project=<p> : delete project with given name
 
-  # [ ]  - list --project=<p> : list all tasks for the given project
+  # [x]  - list --project=<p> : list all tasks for the given project
+  
   # [ ]  - add <text> --project=<p> : add a new task for the given project, as non-completed
   # [ ]  - complete <taskId> --project=<p> : set the task with given id as complete
   # [ ]  - delete <taskId> --project=<p> : delete the task with given id
@@ -44,13 +45,15 @@ when isMainModule:
   let project = args["project"]
   let debug = args["debug"]
 
-  let app = newApplication()
+  let app = newTaskManager()
 
   try:
     case command:
       of "projects": app.listProjects()
       of "new": app.createProject(project)
       of "delete": app.deleteProject(project)
+
+      of "list": app.listTasksForProject(project)
       else: echo "Unknown command"
   except Exception:
     echo "Error : " & getCurrentExceptionMsg()
